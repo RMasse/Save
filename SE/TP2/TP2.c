@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+
+#define N 1024
+#define EOF (-1)
+
+typedef struct Fichier
+{
+	int fd; // file descriptor 
+	char mode; // 'r' ou 'w'
+	unsigned char tampon[N],*tamponp;
+	int n;
+}	FICHIER;
+
+static int flushbuff(FICHIER *f){
+	if(write(f->fd,f->tampon,sizeof(f->tampon))!=f->n){
+		return 1;
+	}
+	f->n=0;
+	f->tamponp=f->tampon;
+	return 0;
+}
+
+FICHIER *my_open(const char *chemin,const char mode){
+	FICHIER *f=malloc(sizeof(FICHIER));
+	if(mode=='r')
+	{
+		f->fd=open(chemin,O_RDONLY);
+		f->mode='r';
+	}
+	else if (mode == 'w')
+	{
+		f->fd= open(chemin,O_WRONLY);
+		f->mode='w';
+	}
+	else
+	{
+		errno=EINVAL;
+		return NULL;
+	}
+	return f;
+}
+
+int my_getc(FICHIER *f){
+	if(f->n==0){
+		f->n=read(f->fd,f->tampon,sizeof(f->tampon));
+		f->tamponp=f->tampon;
+	}
+	if(--(f->n)>=0){
+		return *f->tamponp++;
+	}
+	else return EOF;
+}
+
+int my_putc(unsigned char c,FICHIER *f){
+	if(f->n==N){
+		flushbuff(f);
+	}
+	*f->tamponp++=c;
+	return c;
+}
+
+int my_close(FICHIER *f){
+	int ret= 0;
+	if(f->mode=='w'){
+		ret= flushbuff(f);
+	}
+	close(f->fd);
+	free(f);
+	return ret;
+}
+
+int main(){
+	FICHIER *f=malloc(sizeof(FICHIER));
+	f=my_open("test.txt",'r');
+	int a;
+	while ((a=my_getc(f))!=EOF){
+		my_putc(a,f);
+	}
+	my_close(f);
+	return 0;
+}

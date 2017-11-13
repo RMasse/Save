@@ -1,0 +1,71 @@
+      Exercice 1
+
+1. echo nous sommes le `date`
+echo Nous sommes le $(date)
+
+2. echo "nous sommes le `date +%d/%m/%Y`
+echo Nous sommes le $(date +%d/%m/%Y)
+
+        Exercice 2
+
+version prof
+#!/bin/bash
+
+echo -n "Entrez votre prénom"
+read prenom
+echo -n "Entrez vore nom"
+read nom
+echo Bonjour $prenom $nom, bienveue!
+echo Le PID du shell est $$
+
+        Exercice 3
+
+version prof
+#!/bin/bash
+
+echo " Ce script a reçu $# arguments"
+echo "Le nom du script $0"
+echo "Valeur du 1er argument $1"
+echo "Valeur du 1er argument $2"
+echo "Valeur du 1er argument $3"
+echo "Liste de tous les arguments est $*"
+echo "PID du script : $! "
+
+3. echo -n "$1" | wc -c
+
+        Exercice 4
+
+if [[ $1 = ?([+-])+([0-9]) ]]
+then
+        echo "C'est un nombre"
+        exit 0
+else
+        echo "Ce n'est pas un nombre"
+        exit 1
+        
+fi
+
+        Exercice 5
+
+1. [ -e /etc ]  [[ -e /etc ]]
+   echo $? -> 0
+2. [ -r /etc/hosts ]
+   echo $? -> 0
+3. [ -x /etc/hosts ]
+   echo $? -> 1
+4. [ -d /usr ]
+   echo $? -> 0
+5. [ -b /dev/null ]
+   echo $? -> 1
+
+        Exerice 6
+
+1. [ "$s1" = "$s2" ]
+   echo $? -> 1
+2. [ "$s1" != "$s2" ]; echo $? -> 0
+3. [ -z "$vide" ]; echo $? -> 1
+4. [ -n "$vide" ]; echo $? -> 0
+5. [[ $fic1 = *.doc ]]; echo $? -> 1
+6. [[ $fic1 = *.@(doc|pdf) ]]; echo $? -> 0
+
+

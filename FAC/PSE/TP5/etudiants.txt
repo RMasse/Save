@@ -1,0 +1,6 @@
+Nom|UE|Moyenne
+Lazard|Systeme|12
+Dupont|Programmation|14
+Petit|Programmation|9
+De Musset|Systeme|18
+Voisin|Systeme|16

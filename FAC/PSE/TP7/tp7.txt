@@ -1,0 +1,42 @@
+Exercice 1
+
+2. 
+	sed '1a\TERIEUR ALAIN:5C:9999:99999:H:199999999999' fich_sed
+	sed '$a\ONYME ANNE:3D:4444:99999:F:199999944444' fich_sed
+	sed -e '/^DUPUIS/a\MASOIF GERARD:5555:99999:H:199999955555' -e '/^DUPUY/a\MASOIF GERARD:5555:99999:H:199999955555' fich_sed 
+
+3.
+	sed -n '3,10p' fich_sed 
+	sed -n '3590,$p' fich_sed
+	sed -n '/:F:/p' fich_sed 
+	sed -n '/:F:/!p' fich_sed 
+	
+4.
+	sed '2d' fich_sed
+	sed '/:5C:/d' fich_sed
+	sed '/^.* GERARD:/d' fich_sed ou sed '/ GERARD:/d' fich_sed
+	
+5.
+	sed -n '/^[AB]/p' fich_sed
+	sed -n '/ [CD]/p' fich_sed
+
+6.
+	sed 's/ STEPHANE/ STANISLAS/g' fich_sed
+	sed 's/.*/\L&/' fich_sed
+
+7.
+	sed 's/\(^.*\) \([A-Z]*\)\(:.*\)/\2 \1\3/g' fich_sed
+	sed '4,7s/\(^.*\) \([A-Z]*\)\(:.*\)/\2 \1\3/g' fich_sed
+	sed '/^[^:]*:[^:]*:123[0-9]:/s/\(^.*\) \([A-Z]*\)\(:.*\)/\2 \1\3/g' fich_sed
+	sed '/:F:/s/\(^.*\) \([A-Z]*\)\(:.*\)/\2 \1\3/g' fich_sed
+
+8.
+	sed -n '1p' fich_sed > resultats_sed
+	sed -n '$p' fich_sed >> resultats_sed
+	sed -n '/^[L]/p' fich_sed >> resultats_sed 
+	cat resultats_sed
+	
+	sed -n -e '1w Fichsortie' -e '$w Fichsortie' fich_sed
+	sed -n '/^L/w Fichsortie' fich_sed
+	
+	

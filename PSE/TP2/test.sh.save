@@ -1,0 +1,5 @@
+#!/bin/sh
+
+${1} : 1er argument
+${2} : 2eme argument
+$3 : 3eme argument

@@ -1,0 +1,80 @@
+(exo1)
+
+1/ mkdir TP3
+   cd TP3
+
+2/ ls bidule && echo hello
+//ls: impossible d'accéder à 'bidule': Aucun fichier ou dossier de ce type
+
+Il n'exécute la 2e commande que si la 1e s'est terminé correctement
+
+3/ ls bidule || echo hello
+//ls: impossible d'accéder à 'bidule': Aucun fichier ou dossier de ce type
+//hello
+
+Il n'exécute la 2e commande que si la 1e ne se termine pas correctement
+
+4/ touch bidule
+   ls bidule && echo hello
+//bidule
+//hello
+
+   ls bidule || echo hello
+//bidule
+
+(exo2)
+
+./verif.sh 
+//Il faut 2 arguments
+
+./verif.sh a b
+//Le 1e argument doit être un fichier
+
+./verif.sh MASSE_ROBIN_TP3.txt b
+//Le 2e argument doit être un répertoire
+
+./verif.sh a ../TP3
+//Le 1e argument doit être un fichier
+
+./verif.sh MASSE_ROBIN_TP3.txt ../TP3
+//Tout va bien
+
+(exo3)
+
+./args-divisible.sh 
+//Il faut 2 arguments minimum
+
+./args-divisible.sh 5 10 14 17 25
+//10 est divisible par 5
+//25 est divisible par 5
+
+
+(exo4)
+
+./copie-fichier.sh
+//Il faut un nombre pair d'arguments
+
+./copie-fichier.sh bidule
+//Il faut un nombre pair d'arguments
+
+./copie-fichier.sh bidule bidule2
+//bidule a été copié dans bidule2
+
+(exo5)
+
+./sous-rep.sh
+//Il faut 1 argument minimum
+
+./sous-rep.sh bidule
+//L'argument bu doit être un répertoire
+
+./sous-rep.sh ../TP3
+//Répertoire ../TP3
+//
+//total 43
+//-rwx------ 1 rmasse GG_MI103A 225 oct.   4 10:32 args-divisible.sh
+//-rw-r--r-- 1 rmasse GG_MI103A  10 oct.   4 10:38 bidule
+//-rwxr--r-- 1 rmasse GG_MI103A 258 oct.   4 10:48 copie-fichier.sh
+//-rw-r--r-- 1 rmasse GG_MI103A 936 oct.   4 10:38 MASSE_ROBIN_TP3.txt
+//-rwx------ 1 rmasse GG_MI103A 238 oct.   4 11:00 sous-rep.sh
+//-rwx------ 1 rmasse GG_MI103A 286 oct.   4 10:24 verif.sh

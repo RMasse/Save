@@ -1,0 +1,66 @@
+       Exercice 1
+
+question 1
+find - recherche des fichiers dans une hiérarchie de répertoires
+
+1. find /adhome/l/la/larmand/Documents -name '[aA]*[3-6]' -ptint
+2.  (a) find /adhome/l/la/larmand/Documents -mtime +30
+        (b) find /adhome/l/la/larmand/Documents -mtime 30
+        (c) find /adhome/l/la/larmand/Documents -mtime -30
+
+3. find /adhome/l/la/larmand/Documents -newer nom_fichier
+
+4. find /adhome/l/la/larmand/Documents -type d
+
+5. find /adhome/l/la/larmand/Documents -size +30c
+-> c pour octets, k pour ko
+
+6. find /adhome/l/la/larmand/Documents -name '* /adhome/l/la/larmand/Documents'
+ -mtime +14 -exec rm {} \;
+-> {} désigne le répertoire courant
+
+question 2
+
+xargs - construire et exécuter des lignes de commandes à partir de
+l'entrée standard
+grep - affiche les lignes correpondant à un motif donné
+
+find /var/log -name ’*.log*’ -type f | grep auth
+-> affiche les lignes qui viennent de la recherche précédente
+
+find /var/log -name ’*.log*’ -type f | xargs grep auth
+-> grep s'écrit dans les résultats du find
+
+
+        Exercice 2
+
+1. printenv
+2. env
+3. echo $PATH; echo $HOME
+
+
+        Exercice 3
+        
+1. mkdir bin
+2. echo ’echo "Execution de ma commande"’ > bin/macommande
+3. chmod u+x macommande
+
+
+        Exercice 4
+
+1. alias
+2. alias p = 'ps -ef | more'
+3. p
+4. unalias p
+5.
+
+        Exercice 5
+
+CTRL + D
+
+        Exercice 6
+
+history
+!ls
+
+

@@ -1,0 +1,51 @@
+	/*		TP8		*/
+	
+/*	2	*/
+
+awk 'NR==1 {print $0 RS "TERIEUR ALAIN:5C:9999:99999:H:199999999999"} ; NR!=1 {print $0}' fich_sed
+OU
+awk '{print NR==1? $0 RS "TERIEUR ALAIN:5C:9999:99999:H:199999999999" : $0}' fich_sed
+
+awk '{print $0} END {print "ONYME ANNE:3D:4444:99999:F:199999944444"}' fich_sed
+
+awk '{print /^DUPUIS|DUPUY/? $0 RS "MASOIF GERARD:5555:99999:H:199999955555" : $0}' fich_sed
+
+/* 3 */
+
+awk 'NR==3, NR==10 {print $0 RS}' fich_sed
+awk 'NR >=3590 {print $0 RS}' fich_sed
+awk -F ':' '$5=="F" {printf $0}' fich_sed
+awk -F ':' '$5!="F" {printf $0}' fich_sed
+
+/* 4 */
+
+awk 'NR!=2 {print $0}' fich_sed
+awk -F ':' '$2!="5C" {print $0}' fich_sed
+awk -F ':' "$1!~/ GERARD$/ {print $0}' fich_sed
+
+/* 5 */
+
+awk -F ':' '$1~/^[AB]/ {print $0}' fich_sed
+awk -nF ':' '$1~/ [CD]/ {print $0}' fich_sed
+
+/* 6 */
+
+awk -F ':' '{ gsub(/ STEPHANE/," STANISLAS",$1) ; print $0}' fich_sed
+awk -F ':' '{ gsub($2, tolower($2)); print $0}' fich_sed
+
+/* 7 */
+
+awk -F ':' '{split ($1,nompre, " "); print nompre[2] " " nompre[1] ":" $2 ":" $3 ":" $4 ":" $5 ":" $6 ":" }' fich_sed
+awk -F ':' '{split ($1,nompre, " "); print NR==4,NR==7? " "nompre[2]" "nompre[1]":"$2":"$3":"$4":"$5":"$6":" : $0}' fich_sed
+awk -F ':' '{split ($1,nompre, " "); print $3~/123[0-9]/ ? " " nompre[2] " " nompre[1] ":" $2 ":" $3 ":" $4 ":" $5 ":" $6 ":" : $0}' fich_sed
+awk -F ':' '{split ($1,nompre, " "); print $5=="F"? " " nompre[2] " " nompre[1] ":" $2 ":" $3 ":" $4 ":" $5 ":" $6 ":" : $0}' fich_sed
+
+
+/* 8 */
+
+awk 'NR == 1 {print $0} END{ print $0}' fich_sed > resultat_awk
+awk '/^L/ {print $0}' fich_sed > resultat_awk
+
+
+
+

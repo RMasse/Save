@@ -1,0 +1,44 @@
+exo1
+
+2/echo "test1" >tata
+	...
+
+3/cat tata titi toto >tutu
+
+4/t?t?
+  t*
+
+5/mkdir ASupprimer
+
+6/mv t?t? ASupprimer/
+
+7/rm ASupprimer/t?t?
+
+8/cat > test1.t
+
+9/cat test1.t > test2.t
+
+exo2
+
+1/wc /etc/group
+
+2/cat /etc/group | tr : " " > res
+
+exo3
+
+1/top -u rmasse
+
+2/ps -u rmasse
+  ps -e 
+  ps -e | wc -l
+  ps -u rmasse | wc -l
+
+5/ps -t
+
+6/ps -t | grep sleep
+
+7/ kill (PID du prgm)
+
+exo5
+
+1/

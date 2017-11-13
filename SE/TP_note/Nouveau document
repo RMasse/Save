@@ -1,0 +1,9 @@
+Écrivez un programme en C qui réalise l'équivalent de la commande suivante, où $1, $2 et $3 sont les trois arguments du programme :
+
+find $1 -name $2 -perm /$3
+
+Vous utiliserez les appels opendir(), readdir(), et stat() pour parcourir et analyser les répertoires et fichiers. Le deuxième argument peut contenir un ou plusieurs caractères jokers : * (pour indiquer n'importe quelle suite de caractères) et ? (pour indiquer n'importe quel caractère unique). Le troisième argument est sous forme octale (777 par exemple).
+
+Votre programme doit se comporter exactement comme la commande find ci-dessus. Pour vérifier qu'il fonctionne correctement, vous pouvez rediriger sa sortie et la comparer avec celle de la commande find, en utilisant différents arguments (par exemple : find /usr -name "*.so" -perm /022 ; find ~ -name "*.c" -perm /100 ; find /bin -name l? -perm /111 ; etc.).
+
+Déposez ici le fichier source .c unique réalisant cette commande (inutile de fournir une archive, le makefile n'est pas demandé).
